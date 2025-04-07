@@ -22,4 +22,4 @@ tensorboard --logdir=runs/reinforce
 
 **STEP 2** : Integration into SUMO environment for traffic control at an intersection 
 
-Modified from already built SUMO environment : [frameworQ](https://github.com/romainducrocq/DQN-frameworQ.git) 
+Modified from already built SUMO environment : [frameworQ](https://github.com/romainducrocq/DQN-frameworQ.git) by Ducrocq Romain 
