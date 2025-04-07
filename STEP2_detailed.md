@@ -17,7 +17,8 @@ The provided framework is tailored for the SUMO environment (traffic simulation)
 
 3. Replace DQN with REINFORCE
 Replace the existing DQN agent (DQNAgent) with my ReinforceAgent. Adapting agent's initialization (state_dim, action_dim) according to the environment provided by SUMO.
-DQN algorithms are missing the policy class, which needs to be added in. 
+DQN algorithms are missing the policy class, which needs to be added in.
+Adding a reinforce_agent.py file to the baseline wrappers and making it inherit from the initial Agent class 
 
 5. Observation Handling
 Verify the CNN input dimensions (input_channels) correspond to the visual data (frames stacked) provided by the SUMO environment.
