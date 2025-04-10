@@ -1,9 +1,9 @@
-# REINFORCEMENT LEARNING - Intelligent Traffic Signal Control with Partial Detection
+# DEEP REINFORCEMENT LEARNING - Intelligent Traffic Signal Control with Partial Detection
 Implementation of the REINFORCE Deep RL algorithm for traffic control at road intersections 
 
 This project aims at implementing a REINFORCE agent and visualize its effectiveness in various applications. 
 
-**STEP 1** :Implement a generic REINFORCE and test it over gym environments 
+**STEP 1** :Implement a generic REINFORCE agent and test it over simple gym environments 
 
 - [`ReinforceAgent_MLP.py`](models/ReinforceAgent_MLP.py) : Simple 2 layer MLP version for discrete array input situations. Tested on [`CartPole-v1`](https://www.gymlibrary.dev/environments/classic_control/cart_pole/)
 
@@ -20,7 +20,7 @@ tensorboard --logdir=runs/reinforce
 ```
 
 
-**STEP 2** : Integration into SUMO environment for traffic control at an intersection 
+**STEP 2** : Create an intersection SUMO environment and integrate the reinforce agent for intelligent traffic control 
 
 See [SUMO documentation](https://sumo.dlr.de/docs/index.html)
 
