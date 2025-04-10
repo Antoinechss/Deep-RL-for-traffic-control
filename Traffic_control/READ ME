@@ -1,0 +1,10 @@
+**HOW TO RUN THE TRAFIC SIMULATION**
+
+go to the project in which located :
+
+  cd ~/PycharmProjects/SUMO_RL
+
+run the observe file : 
+
+	python observe_reinforce.py
+
