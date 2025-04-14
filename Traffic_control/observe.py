@@ -2,7 +2,7 @@ from sumo_env import SumoIntersectionEnv
 from reinforce_agent import ReinforceAgent
 
 # Load the environment with GUI
-env = SumoIntersectionEnv("/Users/antoinechosson/Desktop/realistic_intersection/intersection.sumocfg", use_gui=False)
+env = SumoIntersectionEnv("/Users/antoinechosson/Desktop/intersection/1tls_2x2.sumocfg", use_gui=True)
 
 # Create agent and load trained model
 agent = ReinforceAgent(env, gamma=0.99, lr=1e-4)
