@@ -13,7 +13,7 @@ class SumoIntersectionEnv(gym.Env):
         self.step_count = 0
 
         self.sumo_binary = "sumo-gui" if use_gui else "sumo"
-        self.tls_id = "C"  # traffic light ID from your .net.xml
+        self.tls_id = "gneJ1"  # traffic light ID from your .net.xml
         self._start_sumo()
 
         # Action space = number of phases (SUMO will tell us)
