@@ -30,7 +30,7 @@ class PolicyNetwork(nn.Module):
         return action_probs
 
 # ----------------------------
-# REINFORCE Agent
+# REINFORCE Agent class
 # ----------------------------
 
 class ReinforceAgent:
@@ -76,38 +76,49 @@ class ReinforceAgent:
         return torch.tensor(G, dtype=torch.float32)
 
     def update_policy(self, log_probs, returns):
+        """
+        Updates agent's policy after every episode using backpropagation
+        """
         loss = sum(-log_prob * G for log_prob, G in zip(log_probs, returns))
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
 
     def train(self, num_episodes, save_path="reinforce_agent.pth", log_dir="runs/reinforce"):
-        if os.path.exists(log_dir):
+        if os.path.exists(log_dir): # checking if a saved agent exists
+            # deleting old files to refresh training logs
             shutil.rmtree(log_dir)
             print(f"Old TensorBoard logs removed from {log_dir}")
 
         writer = SummaryWriter(log_dir=log_dir)
-        best_reward = -float("inf")
+        best_reward = -float("inf") # initialize best reward as default
 
         for episode in range(num_episodes):
-            log_probs, rewards = self.generate_episode()
+            log_probs, rewards = self.generate_episode() # compute proba distribution and rewards R1...Rn
             returns = self.compute_discounted_returns(rewards)
-            returns = (returns - returns.mean()) / (returns.std() + 1e-8)
+            returns = (returns - returns.mean()) / (returns.std() + 1e-8) # normalize result
             self.update_policy(log_probs, returns)
 
+            # Tracking cumulated rewards over the episodes iterations (for tensorboard visualization)
             total_reward = sum(rewards)
             writer.add_scalar("Total Reward", total_reward, episode)
 
+            # Displaying reward every 10 episode for training visualization
             if episode % 10 == 0:
                 print(f"Episode {episode}: Total Reward = {total_reward}")
 
+            # Updating reward
             if total_reward > best_reward:
                 best_reward = total_reward
                 torch.save(self.policy.state_dict(), save_path)
                 print(f"Model saved at Episode {episode} with Reward {best_reward}")
 
-        writer.close()
+        writer.close() # exit metrics logging window
+
 
     def load_model(self, save_path="reinforce_agent.pth"):
+        """
+        Saves the trained agent as a reinforce_agent file
+        """
         self.policy.load_state_dict(torch.load(save_path))
         print("Model loaded successfully!")
