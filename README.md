@@ -7,7 +7,9 @@ Deep Reinforcement Learning – Intelligent Traffic Signal Control with Partial 
     Implementation of a policy-based Deep Reinforcement Learning approach (REINFORCE)
     for automated traffic signal control at urban intersections using SUMO.
   </em>
-    <em>
+</p>
+<p align="center">
+  <em>
     BSc in Computer Science & Mathematics 3rd Year research project
   </em>
 </p>
